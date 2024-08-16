@@ -1,0 +1,27 @@
+server:
+  port : 8086
+  servlet:
+    context-path: /ms-image-service
+spring:
+  application:
+    name: ms-image-service
+  flyway:
+    enabled: true
+    baseline-on-migrate : true
+
+amazon:
+  s3:
+    bucket:
+      name: my-bucket
+  aws:
+    access-key: test
+    secret-key: test
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:localhost}:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    hostname: ${EUREKA_HOST:localhost}

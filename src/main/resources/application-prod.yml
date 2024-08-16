@@ -1,0 +1,45 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    distribution:
+      percentiles-histogram:
+        "[http.server.requests]": true
+
+server:
+  port : 8443
+  servlet:
+    context-path: /ms-image-service
+spring:
+  application:
+    name: ms-image-service
+  flyway:
+    enabled: true
+    baseline-on-migrate : true
+
+amazon:
+  s3:
+    url: https://twitter-minio.onrender.com
+    bucket:
+      name: photos-bucket
+  aws:
+    access-key: ${AWS_ACCESS_KEY}
+    secret-key: ${AWS_SECRET_KEY}
+eureka:
+  instance:
+    hostname: ms-image-service.onrender.com  # Public domain name
+    nonSecurePort: 443  # Standard HTTP port
+    securePortEnabled: true  # Enable if you're using HTTPS
+    preferIpAddress: false  # Use the hostname instead of the IP address
+    statusPageUrlPath: /actuator/info  # Default status page path
+    healthCheckUrlPath: /actuator/health  # Default health check path
+  client:
+    serviceUrl:
+      defaultZone: https://ms-eureka-server-2cvn.onrender.com/eureka
+    fetch-registry: true
+    register-with-eureka: true
