@@ -1,0 +1,1 @@
+ms-image-service: Store photos and profile pictures.
