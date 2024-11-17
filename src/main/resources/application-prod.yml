@@ -12,7 +12,7 @@ management:
         "[http.server.requests]": true
 
 server:
-  port : 8443
+  port : 443
   servlet:
     context-path: /ms-image-service
 spring:
@@ -33,8 +33,9 @@ amazon:
 eureka:
   instance:
     hostname: ms-image-service-kmy4.onrender.com  # Public domain name
-    nonSecurePort: 443  # Standard HTTP port
+    securePort: 443  # Standard HTTP port
     securePortEnabled: true  # Enable if you're using HTTPS
+    nonSecurePortEnabled: false
     preferIpAddress: false  # Use the hostname instead of the IP address
     statusPageUrlPath: /actuator/info  # Default status page path
     healthCheckUrlPath: /actuator/health  # Default health check path
